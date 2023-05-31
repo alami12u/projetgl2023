@@ -1,0 +1,5 @@
+L1 : [La défense ; Les sablons ; Neuilly ; Charles de Gaulle ; Franklin D roosvelt; Clamenceau; Concord; Louvre; Louvre Rivoli ; Chatelêt; Hotel de Ville ; Bastille ; Ledru-Rollin ; Gare de lyon ; Reuilly-Diderot ; Nations ; Porte de Vinciennes; Château de Vinciennes]
+L2 : [Porte Dauphine ; Victor Hugo ; Charles de Gaulle; Ternes ; Villiers ; Rome ; Place de Clichy; Pigalle ; La chappelle ; Stalingrad ; Jaurés ; Belleville ; Courounnes ; Père la chaise ; Avron ; Nations]
+L3 : [Pont de Levallois Bécon ; Periere ; Villiers ; Saint-Lazare ; Hauvre Caumartin ; Opéra ; Bourse ; Sentier ; Réamure Sébastopol ; République ; Parmentier ; Père la chaise ; Gambetta ; Porte de Bagnolet ; Gallieni]
+L4 : [Mairie de Saint-Ouen ; Saint-Ouen; Porte de Clichy; Porte d’Asnière ; Rome ; Saint-Lazare ; Madeleine; Pyramides ; Chatelêt ; Hotel de Ville ; Bastille ; Ledru-Rollin ; Gare de lyon ; Bercy ; Cour St-Eméllion ; Bibliothèque Fr. Mitterande ; Olympiades]
+L5 : [Mairie de Lilas; Porte de Lilas; Place des Fêtes ; Jourdaines ; Pyrénées ; Belleville ; GoncourtGoncourt ; République ; Hotel de Ville ; Chatelêt]
