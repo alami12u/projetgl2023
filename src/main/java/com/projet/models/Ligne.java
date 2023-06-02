@@ -30,7 +30,7 @@ public class Ligne {
     public Ligne(String nom){
         this.nom = nom;
         this.stations = new ArrayList<>();
-        // TODO: Complete segments
+        this.segments = new ArrayList<>();
     }
 
     /* ---- Methodes publiques ---- */
@@ -40,6 +40,10 @@ public class Ligne {
      */
     public void ajouterStation(Station station){
         this.stations.add(station);
+        int nbStations = stations.size();
+        if(nbStations>1){
+            this.segments.add(new Segment(stations.get(nbStations-2), stations.get(nbStations-1)));
+        }
     }
 
     /* Getters / Setters */
