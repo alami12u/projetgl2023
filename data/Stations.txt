@@ -1,0 +1,61 @@
+1 ; La défense ; 310 ; 2250
+2 ; Porte Dauphine ; 390 ; 1700
+3 ; Les sablons ; 500 ; 2050
+4 ; Victor Hugo ; 600 ; 1500
+5 ; Neuilly ; 790 ; 1890
+6 ; Charles de Gaulle ; 880 ; 1700
+7 ; Pont de Levallois Bécon ; 1000 ; 2300
+8 ; Franklin D roosvelt ; 1050 ; 1500
+9 ; Ternes ; 1050 ; 1890
+10 ; Periere ; 1130 ; 2190
+11 ; Clamenceau ; 1225 ; 1340
+12 ; Villiers ; 1290 ; 2050
+13 ; Porte d’Asnière ; 1290 ; 2390
+14 ; Concord ; 1440 ; 1140
+15 ; Rome ; 1440 ; 2190
+16 ; Madeleine ; 1515 ; 1390
+17 ; Saint-Lazare ; 1515 ; 1770
+18 ; Porte de Clichy ; 1515 ; 2500
+19 ; Louvre ; 1695 ; 1140
+20 ; Hauvre Caumartin ; 1700 ;1690
+21 ; Place de Clichy ; 1760 ; 2190
+22 ; Saint-Ouen ; 1760 ; 2750
+23 ; Pyramides ; 1810 ; 1290
+24 ; Opéra ; 1810 ; 1500
+25 ; Louvre Rivoli ; 1905 ; 1140
+26 ; Bourse ; 1945 ; 1390
+27 ; Pigalle ; 2040 ; 2190
+28 ; Mairie de Saint-Ouen ; 2090 ; 2750
+29 ; La chappelle ; 2300 ; 2190
+30 ; Réamure Sébastopol ; 2370 ; 1390
+31 ; Hotel de Ville ; 2400 ; 1140
+32 ; Bastille ; 2665 ; 1100
+33 ; République ; 2665 ; 1390
+34 ; Goncourt ; 2665 ; 1580
+35 ; Belleville ; 2665 ; 1870
+36 ; Jaurés ; 2665 ; 1990
+37 ; Stalingrad ;  2665 ; 2190
+38 ; Ledru-Rollin ; 2740 ; 870
+39 ; Pyrénées ; 2740 ; 1890
+40 ; Olympiades ; 2790 ; 190
+41 ; Parmentier ; 2790 ; 1390
+42 ; Courounnes ; 2790 ; 1580
+43 ; Gare de lyon ; 2900 ; 670
+44 ; Bibliothèque Fr. Mitterande ; 3000 ; 190
+45 ; Avron ; 3000 ; 1100
+46 ; Père la chaise ; 3000 ; 1390
+47 ; Jourdaines ; 3000 ; 1890
+48 ; Bercy ; 3080 ; 510
+49 ; Reuilly-Diderot ; 3080 ; 800
+50 ; Nations ; 3160 ; 830
+51 ; Cour St-Eméllion ; 3220 ; 370
+52 ; Gambetta ; 3220 ; 1390
+53 ; Porte de Vinciennes ; 3295 ; 100
+54 ; Place des Fêtes ; 3295 ;  1890
+55 ; Château de Vinciennes ; 3445 ; 800
+56 ; Porte de Bagnolet ; 3495 ; 1390
+57 ; Porte de Lilas ; 5575 ; 1890
+58 ; Mairie de Lilas ; 5690 ; 1990
+59 ; Gallieni ; 5740 ; 1390
+60 ; Sentier ; 1700 ; 1390
+61 ; Chatelêt ; 1900 ; 1150
