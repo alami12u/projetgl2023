@@ -18,24 +18,28 @@ public class Metro {
         this.stations = stations;
         this.lignes = lignes;
     }
-
-    /* Initialisation du réseau */
     
-    public void initReseau(){
-        
-    }
-
     /* ------ Methods publiques */
 
     /**
      * Retourn la station la plus proche aux cordonnées passées en parametres;
-     * @param longtitude    position (longtitude)
+     * @param longitude    position (longitude)
      * @param latitude      position (Latitude)
      * @return              Station la plus proche aux cordonnées en parametres
      */
-    public Station stationProche(int longtitude, int latitude){
+    public Station stationProche(int longitude, int latitude){
+        Station proche = null;
+        double minDistance = Double.MAX_VALUE;
 
-        return null;
+    for (Station station : this.stations) {
+        double distance = station.calculerDistance(longitude, latitude);
+        if (distance < minDistance) {
+            minDistance = distance;
+            proche = station;
+        }
+    }
+
+    return proche;
     }
 
     /**
@@ -49,7 +53,7 @@ public class Metro {
      * @see                 Metro#stationProche(int, int)
      */
     public Route trouverRoute(Station depart, Station arrivé, Filtre filtre){
-
+        
         return null;
     }
 
@@ -67,18 +71,6 @@ public class Metro {
         this.lignes = lignes;
     }
 
-    /* ---- Redefinition ---- */    
-    @Override
-    public String toString(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("Nombre de stations : " + stations.size() + "\n");
-        builder.append("Nombre de lignes : " + lignes.size() + "\n");
-        for(Ligne ligne : lignes){
-            builder.append("----------- Ligne : " + ligne.getNom() + "----- : \n");
-            for(Station station : ligne.getStations()) builder.append(station.toString() + "\n");
-        }
-
-        return builder.toString();
-    }
+    
     
 }

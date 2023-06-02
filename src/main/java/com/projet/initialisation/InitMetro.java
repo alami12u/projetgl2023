@@ -1,7 +1,6 @@
 package com.projet.initialisation;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -40,7 +39,7 @@ public class InitMetro{
     /**
      * Charge une liste des stations à partir du fichier des stations
      * Le fichier qui recap les données des stations à la structure suivante : <br></br>
-     * Id ; Nom de la station ; longtitude ; latitude
+     * Id ; Nom de la station ; longitude ; latitude
      * <hr></hr>
      * @param cheminStations    Chemin vers le fichier des stations
      * @return                  List des stationss
@@ -104,7 +103,7 @@ public class InitMetro{
      * @param nom           Nom de la station recherchée
      * @return              Station recherché sinon null si a station n'est pas trouvée
      */
-    private Station stationParNom(List<Station> stations ,String nom){
+    public Station stationParNom(List<Station> stations ,String nom){
         for(Station station: stations){
             if(station.getNom().equalsIgnoreCase(nom)) return station;
         }
