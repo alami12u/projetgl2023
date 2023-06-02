@@ -45,6 +45,18 @@ public class Ligne {
             this.segments.add(new Segment(stations.get(nbStations-2), stations.get(nbStations-1)));
         }
     }
+    /**
+     * retourne le segment qui continet ces deux stations
+     * @param nextStation
+     * @param station
+     * @return
+     */
+    public Segment getSegment(Station nextStation, Station station) {
+        for(Segment segment : segments){
+            if(segment.contient(nextStation) && segment.contient(station)) return segment;
+        }
+        return null;
+    }
 
     /* Getters / Setters */
     public String getNom() {
@@ -65,6 +77,7 @@ public class Ligne {
     public void setSegments(List<Segment> segments) {
         this.segments = segments;
     }
+    
 
     
 }
