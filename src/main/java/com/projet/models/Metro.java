@@ -1,5 +1,6 @@
 package com.projet.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,24 +19,28 @@ public class Metro {
         this.stations = stations;
         this.lignes = lignes;
     }
-
-    /* Initialisation du réseau */
     
-    public void initReseau(){
-        
-    }
-
     /* ------ Methods publiques */
 
     /**
      * Retourn la station la plus proche aux cordonnées passées en parametres;
-     * @param longtitude    position (longtitude)
+     * @param longitude    position (longitude)
      * @param latitude      position (Latitude)
      * @return              Station la plus proche aux cordonnées en parametres
      */
-    public Station stationProche(int longtitude, int latitude){
+    public Station stationProche(int longitude, int latitude){
+        Station proche = null;
+        double minDistance = Double.MAX_VALUE;
 
-        return null;
+    for (Station station : this.stations) {
+        double distance = station.calculerDistance(longitude, latitude);
+        if (distance < minDistance) {
+            minDistance = distance;
+            proche = station;
+        }
+    }
+
+    return proche;
     }
 
     /**
@@ -49,8 +54,21 @@ public class Metro {
      * @see                 Metro#stationProche(int, int)
      */
     public Route trouverRoute(Station depart, Station arrivé, Filtre filtre){
+        // Validation des parametres
+        if(depart==null || arrivé==null || filtre==null){return null;}
 
-        return null;
+        Route meilleureRoute = null;
+        for(Ligne ligne:lignes){
+            // Verifier si'il n ya qu'une seule ligne
+            if(ligne.getStations().contains(arrivé) && ligne.getStations().contains(depart)){
+                // Calculer la meilleur route
+                Route route = calculerRoute(ligne, depart, arrivé, filtre);
+                // Verifier les filtres
+                if(route!=null && route.estMeilleur(meilleureRoute, filtre)){meilleureRoute=route;}
+
+            }
+        }
+        return meilleureRoute;
     }
 
     /* ------ Getters / Setters ------ */
@@ -65,20 +83,33 @@ public class Metro {
     }
     public void setLignes(List<Ligne> lignes) {
         this.lignes = lignes;
-    }
+    }    
 
-    /* ---- Redefinition ---- */    
-    @Override
-    public String toString(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("Nombre de stations : " + stations.size() + "\n");
-        builder.append("Nombre de lignes : " + lignes.size() + "\n");
-        for(Ligne ligne : lignes){
-            builder.append("----------- Ligne : " + ligne.getNom() + "----- : \n");
-            for(Station station : ligne.getStations()) builder.append(station.toString() + "\n");
+    /* ---- Methodes privees ---- */
+    private Route calculerRoute(Ligne ligne, Station depart, Station arrivee, Filtre filtre){
+        List<Station> stations = new ArrayList<>();
+        List<Segment> segments = new ArrayList<>();
+        int indexDepart = ligne.getStations().indexOf(depart);
+        int indexArrivee = ligne.getStations().indexOf(arrivee);
+        boolean enAvant = indexDepart <= indexArrivee ;
+
+        if(enAvant){
+            for(int i=indexDepart; i<=indexArrivee; i++){
+                Station nextStation = ligne.getStations().get(i);
+                stations.add(ligne.getStations().get(i));
+                if(stations.size()>1){
+                    segments.add(ligne.getSegment(nextStation, stations.get(stations.size()-2)));
+                }
+            }
+        }else{
+            for(int i=indexDepart; i>=indexArrivee; i++){
+                Station nextStation = ligne.getStations().get(i);
+                stations.add(ligne.getStations().get(i));
+                segments.add(ligne.getSegment(nextStation, stations.get(stations.size()-2)));
+
+            }
         }
 
-        return builder.toString();
+        return new Route(depart, arrivee, stations, segments);
     }
-    
 }

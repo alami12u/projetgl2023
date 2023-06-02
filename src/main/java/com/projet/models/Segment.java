@@ -43,6 +43,14 @@ public class Segment {
         int vitess = rand.nextInt(11)+10 ;      
         return (int)distance/vitess;
     }
+    /**
+     * Verfie si ce segment continet la station
+     * @param nextStation
+     * @return
+     */
+    public boolean contient(Station station) {
+        return (this.arrivee.getNom().equalsIgnoreCase(station.getNom()) || this.depart.getNom().equalsIgnoreCase(station.getNom()));
+    }
 
     /* ------ Getters/Setters ------ */
     public Station getDepart() {

@@ -31,6 +31,23 @@ public class Route {
         return temps;
     }
 
+    /**
+     *  Compare Cette route avec la route en parametre selon les filtres
+     * @param route
+     * @param filtre
+     * @return  true si cette route est la meilleur
+     */
+    public boolean estMeilleur(Route route, Filtre filtre) {
+        if(route==null){return true;}
+        if(filtre.isPlusRapide() && route.calculerTempsTrajet()>this.calculerTempsTrajet()){
+            return true;
+        }
+        if(filtre.isMoinDeChangements() && route.getSegments().size() < this.getSegments().size()){
+            return true;
+        }
+        return false;
+    }
+
     /* ------ Getters / Setters ------- */
     public Station getDepart() {
         return depart;
@@ -56,6 +73,7 @@ public class Route {
     public void setSegments(List<Segment> segments) {
         this.segments = segments;
     }
+    
     
     
 }
