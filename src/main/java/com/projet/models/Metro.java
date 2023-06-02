@@ -67,6 +67,18 @@ public class Metro {
         this.lignes = lignes;
     }
 
-    
+    /* ---- Redefinition ---- */    
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Nombre de stations : " + stations.size() + "\n");
+        builder.append("Nombre de lignes : " + lignes.size() + "\n");
+        for(Ligne ligne : lignes){
+            builder.append("----------- Ligne : " + ligne.getNom() + "----- : \n");
+            for(Station station : ligne.getStations()) builder.append(station.toString() + "\n");
+        }
+
+        return builder.toString();
+    }
     
 }

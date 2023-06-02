@@ -1,5 +1,6 @@
 package com.projet.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,6 +20,26 @@ public class Ligne {
         this.nom = nom;
         this.stations = stations;
         this.segments = segments;
+    }
+
+    /**
+     * Constructeur par nom
+     * Ce constructeur defini le nom de la ligne et initialise la liste des stations par une liste vide
+     * @param nom
+     */
+    public Ligne(String nom){
+        this.nom = nom;
+        this.stations = new ArrayList<>();
+        // TODO: Complete segments
+    }
+
+    /* ---- Methodes publiques ---- */
+    /**
+     * Ajoute la station à la liste des stations
+     * @param station
+     */
+    public void ajouterStation(Station station){
+        this.stations.add(station);
     }
 
     /* Getters / Setters */
