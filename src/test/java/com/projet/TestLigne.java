@@ -1,8 +1,12 @@
-package com.projet.models;
+package com.projet;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.projet.models.Ligne;
+import com.projet.models.Segment;
+import com.projet.models.Station;
 
 import java.util.ArrayList;
 import java.util.List;

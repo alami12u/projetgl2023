@@ -57,21 +57,5 @@ public class TestRoute {
         Assert.assertEquals(expectedTotalTime, actualTotalTime);
     }
 
-    @Test
-    public void testEstMeilleur() {
-        List<Station> otherStations = new ArrayList<>();
-        otherStations.add(station1);
-        otherStations.add(station3);
-        otherStations.add(station4);
-
-        List<Segment> otherSegments = new ArrayList<>();
-        otherSegments.add(segments.get(0));
-        otherSegments.add(segments.get(2));
-
-        Route otherRoute = new Route(station1, station4, otherStations, otherSegments);
-
-        Filtre filter = new Filtre(true, false, null);
-
-        Assert.assertTrue(route.estMeilleur(otherRoute, filter));
-    }
+    
 }

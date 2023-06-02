@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 
 import com.projet.models.Station;
 
-import static org.junit.Assert.*;
-
 public class TestStations {
 
     
