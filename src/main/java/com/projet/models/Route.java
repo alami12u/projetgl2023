@@ -1,5 +1,6 @@
 package com.projet.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Route {
@@ -24,7 +25,7 @@ public class Route {
      * d'arret de chack station
      * @return
      */
-    int calculerTempsTrajet(){
+    public int calculerTempsTrajet(){
         int temps = 0;
         for(Station station : stations) temps+=station.getDureeArret();
         for(Segment segment:segments) temps+=segment.calculerTempsTrajet();
@@ -48,6 +49,41 @@ public class Route {
         return false;
     }
 
+    public Route ajouter(Route route) throws Exception {
+        Route totalRoute;
+    
+        if (this.terminal.getNom().equalsIgnoreCase(route.depart.getNom())) {
+            this.setTerminal(route.getTerminal());
+            for (Station station : route.getStations().subList(1, route.getStations().size())) {
+                this.ajouterStation(station, route);
+            }
+            totalRoute = this;
+        } else if (this.depart.getNom().equalsIgnoreCase(route.terminal.getNom())) {
+            Route newRoute = route.ajouter(this);
+            this.stations = newRoute.getStations();
+            this.depart = newRoute.getDepart();
+            this.terminal = newRoute.getTerminal();
+            this.segments = newRoute.getSegments();
+            totalRoute = this;
+        } else {
+            throw new Exception("Les deux routes ne font pas une correspondance");
+        }
+    
+        return totalRoute;
+    }
+    
+
+    public void ajouterStation(Station station, Route route){
+        this.stations.add(station);
+        this.segments.add(route.getSegment(station, stations.get(stations.size()-2)));
+    }
+
+    private Segment getSegment(Station station, Station station2) {
+        for(Segment segment : segments){
+            if(segment.contient(station2) && segment.contient(station)) return segment;
+        }
+        return null;
+    }
     /* ------ Getters / Setters ------- */
     public Station getDepart() {
         return depart;
@@ -72,8 +108,7 @@ public class Route {
     }
     public void setSegments(List<Segment> segments) {
         this.segments = segments;
-    }
-    
+    }    
     
     
 }

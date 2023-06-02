@@ -57,16 +57,25 @@ public class Metro {
         // Validation des parametres
         if(depart==null || arrivé==null || filtre==null){return null;}
 
-        Route meilleureRoute = null;
-        for(Ligne ligne:lignes){
-            // Verifier si'il n ya qu'une seule ligne
-            if(ligne.getStations().contains(arrivé) && ligne.getStations().contains(depart)){
-                // Calculer la meilleur route
-                Route route = calculerRoute(ligne, depart, arrivé, filtre);
-                // Verifier les filtres
-                if(route!=null && route.estMeilleur(meilleureRoute, filtre)){meilleureRoute=route;}
+        List<Ligne> lignes = new ArrayList<>();
 
+        Route meilleureRoute = null;
+        for(Ligne ligne:this.lignes){
+            // Verifier si'il n ya qu'une seule ligne
+            if(ligne.contient(depart)){lignes.add(ligne);}
+            if(ligne.contient(arrivé)){lignes.add(ligne);}
+
+        }
+        if(lignes.size()==1){
+            // Calculer la meilleur route
+            Route route = calculerRoute(lignes.get(0), depart, arrivé, filtre);
+            // Verifier les filtres
+            if(route!=null){
+                meilleureRoute = route;
             }
+        }else if(lignes.size()==2){
+            Route route = calculerRoute(lignes, depart, arrivé, filtre);
+            meilleureRoute = route;
         }
         return meilleureRoute;
     }
@@ -102,14 +111,45 @@ public class Metro {
                 }
             }
         }else{
-            for(int i=indexDepart; i>=indexArrivee; i++){
+            for(int i=indexDepart; i>=indexArrivee; i--){
                 Station nextStation = ligne.getStations().get(i);
                 stations.add(ligne.getStations().get(i));
-                segments.add(ligne.getSegment(nextStation, stations.get(stations.size()-2)));
+                if(stations.size()>1){
+                    segments.add(ligne.getSegment(nextStation, stations.get(stations.size()-2)));
+                }
 
             }
         }
 
         return new Route(depart, arrivee, stations, segments);
+    }
+
+    private Route calculerRoute(List<Ligne> lignes, Station depart, Station arrivee, Filtre filtre){
+        List<Station> correspendances = lignes.get(0).getCorrespendance(lignes.get(1));
+        Route meilleurRoute = null;
+        Ligne ligneDepart = null;
+        Ligne ligneArrivee = null;
+        if(lignes.get(0).contient(depart)){
+            ligneDepart = lignes.get(0);
+            ligneArrivee = lignes.get(1);
+        }else{
+            ligneDepart = lignes.get(1);
+            ligneArrivee = lignes.get(0);
+        }
+        for(Station station : correspendances){
+            Route routeDepuisDepart = calculerRoute(ligneDepart, depart, station, filtre);
+            Route routeVersArrivee = calculerRoute(ligneArrivee, station, arrivee, filtre);
+            Route route = null;
+            try {
+                route = routeDepuisDepart.ajouter(routeVersArrivee);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+            if(route.estMeilleur(meilleurRoute, filtre)){meilleurRoute=route;}
+
+        }
+        return meilleurRoute;
     }
 }
