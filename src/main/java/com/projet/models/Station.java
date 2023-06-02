@@ -58,6 +58,7 @@ public class Station {
         return Math.sqrt(
             Math.pow(this.longtitude - longtitude, 2)+Math.pow(this.latitude-latitude, 2)
         );
+    }
     
 
     /* Getters / Setters */
