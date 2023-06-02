@@ -1,5 +1,7 @@
 package com.projet.models;
 
+import java.util.Random;
+
 public class Station {
     private String nom;
     private int latitude;
@@ -18,6 +20,22 @@ public class Station {
         Incident = incident;
     }
 
+    /**
+     * Constructeur d'une station
+     * Ce constructeur est conçu pour charger une station à partir du fichier .txt des station qui ne contient quile nom, la longtitude et la latitude
+     * Les autre atributs sont géneré d'une manière aleatoire
+     * @param nom           Nom de la station
+     * @param latitude      La latitude
+     * @param longtitude    La longtitude
+     */
+    public Station(String nom, int latitude, int longtitude){
+        this.nom = nom;
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        Random rand = new Random();
+        this.dureeArret = rand.nextInt(4)+2;        //  2 <= DurreeArret <= 5
+        this.Incident = (rand.nextInt(100) > 80);   //  20% Chance pour avoir un incident
+    }
 
     /* ------- Methodes publiques -------- */
     /**
@@ -40,7 +58,7 @@ public class Station {
         return Math.sqrt(
             Math.pow(this.longtitude - longtitude, 2)+Math.pow(this.latitude-latitude, 2)
         );
-    }
+    
 
     /* Getters / Setters */
     public String getNom() {
@@ -74,8 +92,11 @@ public class Station {
         Incident = incident;
     }
 
-    
 
-    
 
+    /* ---- Redefinitions ----- */
+    @Override
+    public String toString(){
+        return this.nom + " : " + this.latitude + " ; " + this.longtitude + " | Arret : " + this.dureeArret + " | "  + (this.Incident ? "Incident " : "Pas d'incident");  
+    }
 }
