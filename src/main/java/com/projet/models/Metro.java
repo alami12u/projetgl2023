@@ -19,6 +19,12 @@ public class Metro {
         this.lignes = lignes;
     }
 
+    /* Initialisation du réseau */
+    
+    public void initReseau(){
+        
+    }
+
     /* ------ Methods publiques */
 
     /**
