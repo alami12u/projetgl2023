@@ -58,6 +58,26 @@ public class Ligne {
         return null;
     }
 
+    public boolean contient(Station station){
+        for(Station st : stations){
+            if(st.getNom().equalsIgnoreCase(station.getNom())) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Renvoie une liste de correspendance entre les deux lignes
+     * @param ligne
+     * @return
+     */
+    public List<Station> getCorrespendance(Ligne ligne){
+        List<Station> corr = new ArrayList<>();
+        for(Station station : stations){
+            if(ligne.contient(station)) {corr.add(station);}
+        }
+        return corr;
+    }
+
     /* Getters / Setters */
     public String getNom() {
         return nom;

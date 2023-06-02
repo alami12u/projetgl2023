@@ -28,8 +28,7 @@ public class Segment {
 
     /* ------ Methodes publiques ------ */
     public int calculerTempsTrajet(){
-        // TODO: Complete
-        return 0;
+        return this.tempsDeTrajet + (this.incident ? 30 : 10); 
     }
 
     /**
